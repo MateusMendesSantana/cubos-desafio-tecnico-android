@@ -19,6 +19,11 @@ class MovieAdapter(movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAda
         var textView1: TextView = itemView.findViewById(R.id.text_movie)
     }
 
+    fun refreshMovies(movies: MutableList<Movie>) {
+        movieList = movies
+        movieListFull = ArrayList(movieList)
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(

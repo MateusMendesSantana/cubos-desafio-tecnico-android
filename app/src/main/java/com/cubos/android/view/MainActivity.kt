@@ -9,8 +9,12 @@ import android.view.Menu
 import android.view.inputmethod.EditorInfo
 import com.cubos.android.R
 import com.cubos.android.model.Movie
+import com.cubos.android.presenter.MoviePresenter
+import com.cubos.android.presenter.MoviePresenterInterface
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainActivityInterface{
+
+    lateinit var presenter: MoviePresenterInterface
     lateinit var movieAdapter: MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,13 +24,11 @@ class MainActivity : AppCompatActivity() {
         val gridLayoutManager = GridLayoutManager(applicationContext, 2)
         recyclerView.layoutManager = gridLayoutManager
 
-        val myDataset = ArrayList<Movie>()
-        myDataset.add(Movie("Vingadores: Ultimato", ""))
-        myDataset.add(Movie("Godzilla II: Rei dos Monstros", ""))
-        myDataset.add(Movie("Power Rangers", ""))
-        myDataset.add(Movie("A", ""))
-        myDataset.add(Movie("A", ""))
-        movieAdapter = MovieAdapter(myDataset)
+        presenter = MoviePresenter(this)
+
+        val movies = presenter.loadMovies()
+
+        movieAdapter = MovieAdapter(movies)
         recyclerView.adapter = movieAdapter
     }
 
@@ -49,5 +51,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
         return true
+    }
+
+    override fun displayMovies(movies: ArrayList<Movie>) {
+        movieAdapter.refreshMovies(movies)
     }
 }

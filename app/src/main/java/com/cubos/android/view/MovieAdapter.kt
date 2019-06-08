@@ -1,4 +1,4 @@
-package com.cubos.android
+package com.cubos.android.view
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.ImageView
 import android.widget.TextView
+import com.cubos.android.R
 import com.cubos.android.model.Movie
 
 class MovieAdapter(movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
@@ -21,7 +22,7 @@ class MovieAdapter(movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAda
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.movie_item,
+                R.layout.movie_item,
             parent, false
         )
 

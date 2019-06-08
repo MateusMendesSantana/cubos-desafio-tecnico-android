@@ -1,4 +1,4 @@
-package com.cubos.android
+package com.cubos.android.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.support.v7.widget.SearchView
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.Menu
 import android.view.inputmethod.EditorInfo
+import com.cubos.android.R
 import com.cubos.android.model.Movie
 
 class MainActivity : AppCompatActivity() {

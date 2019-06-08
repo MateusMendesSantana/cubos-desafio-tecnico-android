@@ -9,29 +9,26 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.cubos.android.model.Movie
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ExampleViewHolder>() {
-    lateinit var movieList: MutableList<Movie>
-    lateinit var movieListFull: List<Movie>
+class MovieAdapter(movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+    var movieList: MutableList<Movie> = movieList
+    var movieListFull: List<Movie> = ArrayList(movieList)
 
-    inner class ExampleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imageView: ImageView = itemView.findViewById(R.id.movieImage)
-        var textView1: TextView = itemView.findViewById(R.id.textMovie)
+    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var imageView: ImageView = itemView.findViewById(R.id.image_movie)
+        var textView1: TextView = itemView.findViewById(R.id.text_movie)
     }
 
-    fun movieAdapter(movieList: MutableList<Movie>) {
-        this.movieList = movieList
-        movieListFull = ArrayList(movieList)
-    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(
             R.layout.movie_item,
             parent, false
         )
-        return ExampleViewHolder(v)
+
+        return MovieViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val currentMovie = movieList[position]
 
         // holder.imageView.setImageResource(currentMovie.getImageResource())

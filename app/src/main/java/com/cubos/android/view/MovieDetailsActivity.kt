@@ -14,6 +14,10 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         val movie = intent.getSerializableExtra("Movie") as Movie
 
+        setDetails(movie)
+    }
+
+    private fun setDetails(movie: Movie) {
         text_description.text = movie.overview
         movie.loadImage(this, image_post)
     }

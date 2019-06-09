@@ -32,4 +32,8 @@ class MovieRepository: MovieRepositoryInterface {
     fun getPopularList(): Call<MovieDTO> {
         return getPopularList(apiKey, language)
     }
+
+    fun searchMovie(query: String): Call<MovieDTO> {
+        return service.searchMovie(apiKey, query, language)
+    }
 }

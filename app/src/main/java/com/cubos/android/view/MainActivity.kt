@@ -43,11 +43,12 @@ class MainActivity : AppCompatActivity(), MainActivityInterface{
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+                presenter.searchMovies(query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                movieAdapter.getFilter().filter(newText)
+                presenter.searchMovies(newText)
                 return false
             }
         })

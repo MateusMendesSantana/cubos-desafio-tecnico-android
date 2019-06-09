@@ -28,4 +28,22 @@ class MoviePresenter(private val view: MainActivityInterface): MoviePresenterInt
             }
         })
     }
+
+    override fun searchMovies(query: String) {
+        val call = movieRepository.searchMovie(query)
+
+        call.enqueue(object : Callback<MovieDTO> {
+            override fun onFailure(call: Call<MovieDTO>, t: Throwable) {
+                Log.i("Error ONE Movie: ", t.message)
+            }
+
+            override fun onResponse(call: Call<MovieDTO>, response: Response<MovieDTO>) {
+                val movieDTO = response.body()
+
+                if (movieDTO != null) {
+                    view.displayMovies(ArrayList(movieDTO.movies))
+                }
+            }
+        })
+    }
 }

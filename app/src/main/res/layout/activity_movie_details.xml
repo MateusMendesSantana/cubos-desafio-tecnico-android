@@ -6,42 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".view.MovieDetailsActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/image_post"
-            android:layout_width="match_parent"
-            android:layout_height="480dp"
-            android:background="@drawable/endgame" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/description"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_description"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco."
-            android:textAlignment="viewStart"
-            android:textSize="20sp" />
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/image_post"
+                android:layout_width="match_parent"
+                android:layout_height="480dp"
+                android:background="@drawable/endgame" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/description"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:text="Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco."
+                android:textAlignment="viewStart"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

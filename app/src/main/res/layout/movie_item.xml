@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/image_movie"
+                android:id="@+id/image_post"
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
                 android:background="@drawable/endgame" />

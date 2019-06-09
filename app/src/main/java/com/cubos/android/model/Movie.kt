@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class Movie(
         val id: Int,
@@ -27,7 +28,7 @@ class Movie(
         @SerializedName("vote_count")
         val voteCount: String,
         @SerializedName("release_date")
-        val releaseDate: String) {
+        val releaseDate: String): Serializable {
 
     fun loadImage(context: Context, imageView: ImageView) {
         Glide.with(context).load("https://image.tmdb.org/t/p/w500$posterPath").into(imageView)

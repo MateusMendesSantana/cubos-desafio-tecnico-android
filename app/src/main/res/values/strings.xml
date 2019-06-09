@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Movie Cubos</string>
     <string name="search">Pesquisar</string>
+    <string name="description">Descrição</string>
 </resources>

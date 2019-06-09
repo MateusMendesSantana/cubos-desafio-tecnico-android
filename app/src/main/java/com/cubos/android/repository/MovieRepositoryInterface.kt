@@ -11,10 +11,10 @@ interface MovieRepositoryInterface {
     fun searchMovie(
             @Query("api_key") apiKey: String,
             @Query("query") query: String,
-            @Query("lenguage") lenguage: String?): Call<MovieDTO>
+            @Query("language") language: String): Call<MovieDTO>
 
     @GET("movie/popular")
     fun getPopularList(
             @Query("api_key") apiKey: String,
-            @Query("lenguage") lenguage: String?): Call<MovieDTO>
+            @Query("language") language: String): Call<MovieDTO>
 }

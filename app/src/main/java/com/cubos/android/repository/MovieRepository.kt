@@ -9,7 +9,7 @@ class MovieRepository: MovieRepositoryInterface {
 
     private val service : MovieRepositoryInterface
     private val apiKey = "05db07e27024bc56a1e3aa80f74fc6bd"
-    private val lenguage = "en-US"
+    private val language = "pt-BR"
 
     init {
         val retrofit = Retrofit.Builder()
@@ -20,15 +20,15 @@ class MovieRepository: MovieRepositoryInterface {
         service = retrofit.create(MovieRepositoryInterface::class.java)
     }
 
-    override fun searchMovie(apiKey: String, query: String, lenguage: String?): Call<MovieDTO> {
-        return service.searchMovie(apiKey, query, lenguage)
+    override fun searchMovie(apiKey: String, query: String, language: String): Call<MovieDTO> {
+        return service.searchMovie(apiKey, query, language)
     }
 
-    override fun getPopularList(apiKey: String, lenguage: String?): Call<MovieDTO> {
-        return service.getPopularList(apiKey, lenguage)
+    override fun getPopularList(apiKey: String, language: String): Call<MovieDTO> {
+        return service.getPopularList(apiKey, language)
     }
 
     fun getPopularList(): Call<MovieDTO> {
-        return getPopularList(apiKey, lenguage)
+        return getPopularList(apiKey, language)
     }
 }

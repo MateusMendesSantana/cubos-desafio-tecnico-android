@@ -5,7 +5,6 @@ import android.os.Bundle
 import com.cubos.android.R
 import com.cubos.android.model.Movie
 import kotlinx.android.synthetic.main.activity_movie_details.*
-import android.view.Menu
 
 class MovieDetailsActivity : AppCompatActivity() {
 
@@ -23,13 +22,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun setDetails(movie: Movie) {
         text_description.text = movie.overview
         movie.loadImage(this, image_post)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.details_menu, menu)
-
-        return true
+        supportActionBar?.title = movie.title
     }
 
     override fun onSupportNavigateUp(): Boolean {

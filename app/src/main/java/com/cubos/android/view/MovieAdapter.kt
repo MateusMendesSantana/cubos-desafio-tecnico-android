@@ -38,7 +38,7 @@ class MovieAdapter(movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAda
         val currentMovie = movieList[position]
 
         // holder.imageView.setImageResource(currentMovie.getImageResource())
-        holder.textView1.text = currentMovie.name
+        holder.textView1.text = currentMovie.title
     }
 
     override fun getItemCount(): Int {
@@ -59,7 +59,7 @@ class MovieAdapter(movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAda
                 val filterPattern = constraint.toString().toLowerCase().trim { it <= ' ' }
 
                 for (item in movieListFull) {
-                    if (item.name.toLowerCase().contains(filterPattern)) {
+                    if (item.title.toLowerCase().contains(filterPattern)) {
                         filteredList.add(item)
                     }
                 }

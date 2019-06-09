@@ -23,7 +23,8 @@
                 android:id="@+id/image_post"
                 android:layout_width="match_parent"
                 android:layout_height="480dp"
-                android:background="@drawable/endgame" />
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/endgame" />
 
             <TextView
                 android:layout_width="match_parent"

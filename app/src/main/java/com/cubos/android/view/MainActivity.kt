@@ -10,13 +10,7 @@ import android.view.inputmethod.EditorInfo
 import com.cubos.android.model.Movie
 import com.cubos.android.presenter.MoviePresenter
 import com.cubos.android.presenter.MoviePresenterInterface
-import android.util.Log
 import com.cubos.android.R
-import com.cubos.android.dto.MovieDTO
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 
 class MainActivity : AppCompatActivity(), MainActivityInterface{
 
@@ -30,23 +24,11 @@ class MainActivity : AppCompatActivity(), MainActivityInterface{
         val gridLayoutManager = GridLayoutManager(applicationContext, 2)
         recyclerView.layoutManager = gridLayoutManager
 
+        movieAdapter = MovieAdapter(ArrayList())
+        recyclerView.adapter = movieAdapter
+
         presenter = MoviePresenter(this)
-
-        val call = presenter.loadMovies()
-        call.enqueue(object : Callback<MovieDTO> {
-            override fun onFailure(call: Call<MovieDTO>, t: Throwable) {
-                Log.i("Error ONE Movie: ", t.message)
-            }
-
-            override fun onResponse(call: Call<MovieDTO>, response: Response<MovieDTO>) {
-                val movieDTO = response.body()
-
-                if (movieDTO != null) {
-                    movieAdapter = MovieAdapter(ArrayList(movieDTO.movies))
-                    recyclerView.adapter = movieAdapter
-                }
-            }
-        })
+        presenter.loadMovies()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -22,6 +22,7 @@ class MovieAdapter(movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAda
     fun refreshMovies(movies: MutableList<Movie>) {
         movieList = movies
         movieListFull = ArrayList(movieList)
+        notifyDataSetChanged()
     }
 
 

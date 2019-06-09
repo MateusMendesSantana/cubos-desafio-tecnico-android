@@ -4,5 +4,5 @@ import com.cubos.android.dto.MovieDTO
 import retrofit2.Call
 
 interface MoviePresenterInterface {
-    fun loadMovies(): Call<MovieDTO>
+    fun loadMovies()
 }

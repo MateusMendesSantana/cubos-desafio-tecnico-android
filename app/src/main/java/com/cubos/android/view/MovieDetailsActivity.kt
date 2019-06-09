@@ -5,12 +5,15 @@ import android.os.Bundle
 import com.cubos.android.R
 import com.cubos.android.model.Movie
 import kotlinx.android.synthetic.main.activity_movie_details.*
+import android.view.Menu
 
 class MovieDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val movie = intent.getSerializableExtra("Movie") as Movie
 
@@ -20,5 +23,18 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun setDetails(movie: Movie) {
         text_description.text = movie.overview
         movie.loadImage(this, image_post)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.details_menu, menu)
+
+        return true
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+
+        return true
     }
 }

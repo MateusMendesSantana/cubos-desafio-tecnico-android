@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity(), MainActivityInterface{
                 return false
             }
         })
+
         return true
     }
 

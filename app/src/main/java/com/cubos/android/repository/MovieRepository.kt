@@ -34,6 +34,10 @@ class MovieRepository: MovieRepositoryInterface {
     }
 
     fun searchMovie(query: String): Call<MovieDTO> {
-        return service.searchMovie(apiKey, query, language)
+        return if(query.isEmpty()) {
+            getPopularList()
+        } else {
+            searchMovie(apiKey, query, language)
+        }
     }
 }

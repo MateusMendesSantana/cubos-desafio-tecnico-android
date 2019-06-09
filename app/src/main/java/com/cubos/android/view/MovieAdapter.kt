@@ -1,5 +1,6 @@
 package com.cubos.android.view
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +11,9 @@ import android.widget.TextView
 import com.cubos.android.R
 import com.cubos.android.model.Movie
 
-class MovieAdapter(movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
-    var movieList: MutableList<Movie> = movieList
+class MovieAdapter(
+        var context: Context,
+        var movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     var movieListFull: List<Movie> = ArrayList(movieList)
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,7 +40,7 @@ class MovieAdapter(movieList: MutableList<Movie>): RecyclerView.Adapter<MovieAda
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val currentMovie = movieList[position]
 
-        // holder.imageView.setImageResource(currentMovie.getImageResource())
+        currentMovie.loadImage(context, holder.imageView)
         holder.textView1.text = currentMovie.title
     }
 

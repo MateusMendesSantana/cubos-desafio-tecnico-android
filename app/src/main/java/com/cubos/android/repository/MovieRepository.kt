@@ -10,10 +10,11 @@ class MovieRepository: MovieRepositoryInterface {
     private val service : MovieRepositoryInterface
     private val apiKey = "05db07e27024bc56a1e3aa80f74fc6bd"
     private val language = "pt-BR"
+    private val baseUrl = "https://api.themoviedb.org/3/"
 
     init {
         val retrofit = Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/")
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 

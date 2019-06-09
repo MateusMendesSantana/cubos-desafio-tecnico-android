@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), MainActivityInterface{
         val gridLayoutManager = GridLayoutManager(applicationContext, 2)
         recyclerView.layoutManager = gridLayoutManager
 
-        movieAdapter = MovieAdapter(ArrayList())
+        movieAdapter = MovieAdapter(this, ArrayList())
         recyclerView.adapter = movieAdapter
 
         presenter = MoviePresenter(this)

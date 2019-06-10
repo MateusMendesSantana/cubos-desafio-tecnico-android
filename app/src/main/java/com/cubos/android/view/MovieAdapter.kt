@@ -14,8 +14,9 @@ import com.cubos.android.R
 
 class MovieAdapter(
         var context: Context,
-        var movieList: MutableList<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+        var movieList: List<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
+    private var currentGenre = 28
     var movieListFull: List<Movie> = ArrayList(movieList)
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,12 +25,19 @@ class MovieAdapter(
         var cardView: CardView = itemView.findViewById(R.id.card_view_movie)
     }
 
-    fun refreshMovies(movies: MutableList<Movie>) {
-        movieList = movies
-        movieListFull = ArrayList(movieList)
+    fun refreshMovies(movies: List<Movie>) {
+        movieList = movies.filter {
+            it.genreIds.contains(currentGenre)
+        }
+        movieListFull = ArrayList(movies)
+
         notifyDataSetChanged()
     }
 
+    fun setCurrentGenre(genreId: Int) {
+        currentGenre = genreId
+        refreshMovies(movieListFull)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(

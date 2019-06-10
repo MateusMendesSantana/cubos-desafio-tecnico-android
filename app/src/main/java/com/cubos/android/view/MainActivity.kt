@@ -2,6 +2,7 @@ package com.cubos.android.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.SearchView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,6 +32,27 @@ class MainActivity : AppCompatActivity(), MainActivityInterface{
 
         presenter = MoviePresenter(this)
         presenter.loadMovies()
+
+        tab_layout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab) {
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                var genre = 28
+
+                when(tab.position) {
+                    0 -> genre = 28
+                    1 -> genre = 18
+                    2 -> genre = 14
+                    3 -> genre = 878
+                }
+
+                movieAdapter.setCurrentGenre(genre)
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
